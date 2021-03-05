@@ -43,6 +43,7 @@ app = dash.Dash(__name__,
 app.title = 'haibun'
 
 df_expense = sql.get_expense_table()
+df_expense_category = sql.expense_by_category()
 df_subscriptions = sql.get_subscription_table()
 df_account_values = sql.get_account_values()
 net_worth_value = sql.get_net_worth()
@@ -171,6 +172,7 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
 app.layout = html.Div([
     dcc.Tabs([
         dcc.Tab(label='Expenses', children=[
+            dcc.Graph(figure=plot.expense_category_bar(df_expense_category)),
             dash_table.DataTable(
                 id='expense_table',
                 columns=[{"name": i, "id": i} for i in df_expense.columns],

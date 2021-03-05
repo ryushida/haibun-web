@@ -30,6 +30,18 @@ def get_expense_table():
 
     return pd.read_sql_query(q_table, con=engine)
 
+def expense_by_category():
+    """ Return expoense df
+    """
+    q_table = "SELECT expense_category.category_name as category, sum(amount) \
+               FROM expense \
+               JOIN expense_category \
+               ON expense.category_id = expense_category.category_id \
+               GROUP BY expense_category.category_name \
+               ORDER BY sum"
+
+    return pd.read_sql_query(q_table, con=engine)
+
 
 def get_subscription_table():
     """ Return subscription df
