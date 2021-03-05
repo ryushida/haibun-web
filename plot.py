@@ -39,3 +39,9 @@ def total_treemap(df):
         hovertemplate='<b>%{label} </b><br>Value: %{value}<br><br>%{text}</br>'
     ))
     return fig
+
+def expense_category_bar(df):
+    """ bar graph of expenses by category
+    """
+    fig = px.bar(df, x='sum', y='category', orientation='h')
+    return fig
