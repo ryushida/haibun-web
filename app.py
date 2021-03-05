@@ -171,24 +171,11 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
 
 app.layout = html.Div([
     dcc.Tabs([
-        dcc.Tab(label='Expenses', children=[
+        dcc.Tab(label='Data', children=[
+            html.H5("Expense"),
             dcc.Graph(figure=plot.expense_category_bar(df_expense_category)),
-            dash_table.DataTable(
-                id='expense_table',
-                columns=[{"name": i, "id": i} for i in df_expense.columns],
-                data=df_expense.to_dict('records'),
-                sort_action='native'
-            )
-        ]),
-        dcc.Tab(label='Subscriptions', children=[
-            dcc.Graph(figure=plot.subscription_bar(df_subscriptions)),
-            dash_table.DataTable(
-                id='subscription_table',
-                columns=[{"name": i, "id": i}
-                         for i in df_subscriptions.columns],
-                data=df_subscriptions.to_dict('records'),
-                sort_action='native'
-            )
+            html.H5("Subscriptions"),
+            dcc.Graph(figure=plot.subscription_bar(df_subscriptions))
         ]),
         dcc.Tab(label='Net Worth', children=[
             html.P(net_worth_value),
