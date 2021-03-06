@@ -79,3 +79,45 @@ def get_account_values():
                 ORDER BY proportion"
 
     return pd.read_sql_query(q_values, con=engine)
+
+def get_treemap_df(portfolio_account_type, portfolio_account_name):
+    """ Return accounts df
+    """
+    q_values = f"WITH w3 as( \
+                    WITH w2 as ( \
+                        WITH w as ( \
+                            SELECT account.account_name, \
+                                   account_value.account_value as value, \
+                                   account_type.account_type \
+                            FROM account_value \
+                            JOIN account \
+                            ON account.account_id = account_value.account_id \
+                            JOIN account_type \
+                            ON account.account_type_id = account_type.account_type_id \
+                            WHERE account_type.account_type != '{portfolio_account_type}' \
+                            UNION \
+                            SELECT item, value, '{portfolio_account_name}' as account_type \
+                            FROM portfolio \
+                            WHERE 'date' = ( select max ('date') from  portfolio ) \
+                            ORDER BY value DESC \
+                        ) \
+                        SELECT *, 100 * value / sum(value) over () as prop \
+                        FROM w \
+                    ) \
+                    SELECT * \
+                    FROM w2 \
+                    WHERE account_type = '{portfolio_account_name}' \
+                    UNION \
+                    SELECT account.account_name, account_value.account_value, \
+                          '' as account_type, \
+                    100 * account_value.account_value / sum(account_value.account_value) over () as prop \
+                    FROM account \
+                    JOIN account_value \
+                    ON account.account_id = account_value.account_id \
+                    ORDER BY account_type, prop DESC \
+                    ) \
+                SELECT account_name, value, \
+                       account_type, to_char(prop, '990D99%') as proportion \
+                FROM w3"
+
+    return pd.read_sql_query(q_values, con=engine)
