@@ -34,7 +34,7 @@ def total_treemap(df):
     fig = go.Figure(go.Treemap(
         labels=df['account_name'],
         parents=df['account_type'],
-        values=df['account_value'],
+        values=df['value'],
         text=df['proportion'],
         hovertemplate='<b>%{label} </b><br>Value: %{value}<br><br>%{text}</br>'
     ))

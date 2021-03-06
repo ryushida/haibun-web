@@ -53,6 +53,7 @@ skip_item = Total
 
 [General]
 portfolio_account_name = Account
+portfolio_account_type = Portfolio
 ```
 
 4. Start Application
