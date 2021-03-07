@@ -21,21 +21,7 @@ Python Dash + PostgreSQL Web Application for visualizing your finances.
 
 # Set up
 
-1. Start PostgreSQL server
-
-2. Create database and tables
-
-```shell
-psql postgresuser
-CREATE DATABASE database_name;
-\c databasename postgres_user
-\i init.sql
-
-\l
-\dt
-```
-
-3. Create `config.ini`
+Create `config.ini`
 
 ```ini
 [Postgres]
@@ -54,7 +40,4 @@ skip_item = Total
 [General]
 portfolio_account_name = Account
 portfolio_account_type = Portfolio
-```
-
-4. Start Application
-
+```x
