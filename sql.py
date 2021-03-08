@@ -98,7 +98,7 @@ def get_treemap_df(portfolio_account_type, portfolio_account_name):
                             UNION \
                             SELECT item, value, '{portfolio_account_name}' as account_type \
                             FROM portfolio \
-                            WHERE 'date' = ( select max ('date') from  portfolio ) \
+                            WHERE date = ( select max (date) from  portfolio ) \
                             ORDER BY value DESC \
                         ) \
                         SELECT *, 100 * value / sum(value) over () as prop \
