@@ -27,7 +27,7 @@ Create `config.ini`
 [Postgres]
 host = 127.0.0.1
 port = 5432
-dbname = database_name
+dbname = haibun
 dbuser = postgres_user
 dbpassword = postgres_password
 
