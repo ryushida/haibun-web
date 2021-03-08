@@ -31,12 +31,6 @@ dbname = database_name
 dbuser = postgres_user
 dbpassword = postgres_password
 
-[csv]
-currency_symbol = $
-item_column = Item
-value_column = Value
-skip_item = Total
-
 [General]
 portfolio_account_name = Account
 portfolio_account_type = Portfolio

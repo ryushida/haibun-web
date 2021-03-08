@@ -21,9 +21,6 @@ warnings.filterwarnings('error')
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-value_column = config.get('csv', 'value_column')
-item_column = config.get('csv', 'item_column')
-skipped_item = config.get('csv', 'skip_item')
 portfolio_account_name = config.get('General', 'portfolio_account_name')
 portfolio_account_type = config.get('General', 'portfolio_account_type')
 
