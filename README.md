@@ -4,13 +4,13 @@ Python Dash + PostgreSQL Web Application for visualizing your finances.
 
 # Features
 
-- List Expenses
+- Visualize expenses (Bar Graph)
 
-- Visualize Subscription (Bar)
+- Visualize Subscriptions (Bar Graph)
 
 - Visualize the value of each account (Stacked Bar Plot)
 
-- Import CSV of Portfolio and Visualize (Treemap and Bar)
+- Visualize portfolio (Treemap)
 
 | Item | Value |
 |---|---|
